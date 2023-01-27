@@ -9,18 +9,26 @@ Mongo DB setup
 3. Create a container with the mongo image in detached mode so that it is still interactive on your system:
 docker run -p 27017:27017 --name mongo_example -d mongo
 
-4. Create a Docker Volume for the data to reside on by entering the following:
-docker volume create mongo_volume
+4. In your Mongo GUI, create a Database with the following struvture based on the appsettings below -
 
-5. Then create a docker run command to attach the volume to the container and map it to the /data/db container directory by entering
-docker run -it -v mongo_volume:/data/db --name mongo_example4 -d mongo
-
-DB/data structure based on appsettings:
+AuthDb > Users
 
 "DatabaseSettings": {
   "ConnectionString": "mongodb://localhost:27017",
   "DatabaseName": "AuthDb",
   "CollectionName":  "Users"
+}
+
+5. Data structure would be -
+
+{
+  "_id": {
+    "$oid": "63b6ba0c6ab80f50290347d7"
+  },
+  "Name": "Darian22",
+  "Surname": "Steyn",
+  "Email": "Test",
+  "Password": "Test"
 }
 
 ![image](https://user-images.githubusercontent.com/39791440/211009668-fb1a93d7-dcbe-45a7-a318-71998b2b08b1.png)
